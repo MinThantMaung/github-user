@@ -7,50 +7,65 @@
 
 import SwiftUI
 
+import SwiftUI
+
 struct UserDetailView: View {
-    var user: User
-    let repositories: [Repository] = [
-            Repository(name: "Setting", language: "Swift", stars: 129,description: "A cool Swift project."),
-            Repository(name: "TodoApp", language: "TypeScript", stars: 200, description: "Simple Todo app with backend."),
-            Repository(name: "GithubUser", language: "Java", stars: 350.5, description: "")
-        ]
+    var userId: Int
+    @StateObject var viewModel = ViewModel()
+
     var body: some View {
-        VStack(alignment: .leading){
-            Text(user.name)
-                .font(.title)
-                .fontWeight(.bold)
-            Image(systemName: user.imageName)
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .frame(width: 100, height: 100)
-                .clipShape(Circle())
-            Text(user.name)
-                .font(.headline)
-                .fontWeight(.semibold)
-            Text("Tom Preston-Werner")
-                .font(.subheadline)
-                .foregroundColor(.primary)
-            HStack{
-                Text("Follower: 24,283")
-                    .foregroundStyle(.gray)
-                Spacer()
-                Text("Following: 11")
-                    .foregroundStyle(.gray)
-            }
-            VStack{
-                Text("Repositories")
-                    .padding(.top,20)
-                ForEach(repositories) { repo in
-                    RepoRowView(
-                        RepoName: repo.name,
-                        Language: repo.language,
-                        Stars: repo.stars,
-                        RepoDesc: repo.description
-                    )
+        ScrollView(.vertical, showsIndicators: true) {
+            LazyVStack(alignment: .leading, spacing: 16) {
+
+                // Header
+                VStack(alignment: .leading, spacing: 8) {
+                    Text(viewModel.userDetail?.login ?? "")
+                        .font(.title).fontWeight(.bold)
+
+                    AsyncImage(url: URL(string: viewModel.userDetail?.avatarUrl ?? "")) { image in
+                        image.resizable().aspectRatio(contentMode: .fill)
+                    } placeholder: { ProgressView() }
+                    .frame(width: 100, height: 100)
+                    .clipShape(Circle())
+
+                    Text(viewModel.userDetail?.login ?? "")
+                        .font(.headline).fontWeight(.semibold)
+
+                    Text(viewModel.userDetail?.name ?? "")
+                        .font(.subheadline)
+                        .foregroundColor(.primary)
+
+                    HStack {
+                        Text("Followers: \(viewModel.userDetail?.followers ?? 0)")
+                            .foregroundStyle(.gray)
+                        Spacer()
+                        Text("Following: \(viewModel.userDetail?.following ?? 0)")
+                            .foregroundStyle(.gray)
+                    }
+                }
+                VStack(alignment: .leading, spacing: 12) {
+                    Text("Repositories")
+                        .font(.title3).bold()
+                        .padding(.top, 8)
+
+                    ForEach(viewModel.repositories) { repo in
+                        RepoRowView(
+                            RepoName: repo.name,
+                            Language: repo.language ?? "",
+                            Stars: repo.stargazersCount,
+                            RepoDesc: repo.description ?? ""
+                        )
+                        .fixedSize(horizontal: false, vertical: true)
+                    }
                 }
             }
+            .padding()
         }
-        .padding()
+        .task {
+            await viewModel.getUserDetail(id: userId)
+            await viewModel.getRepositories(url: viewModel.userDetail?.reposUrl ?? "")
+        }
     }
 }
+
 

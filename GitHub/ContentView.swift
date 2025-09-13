@@ -6,37 +6,34 @@
 //
 
 import SwiftUI
+import Alamofire
 
 struct ContentView: View {
-    let users: [User] = [
-        User(name: "Min Thant",imageName: "person.circle"),
-        User(name: "John",imageName: "globe"),
-        User(name: "Jane",imageName: "star"),
-        User(name: "Mia",imageName: "moon"),
-        User(name: "Johnny",imageName: "cloud"),
-        User(name: "Smith",imageName: "sun.max")
-    ]
+    @StateObject var viewModel: ViewModel = ViewModel()
     
     var body: some View {
         NavigationStack {
             List{
-                ForEach(users) { user in
+                ForEach(viewModel.users) { user in
                     NavigationLink(
-                        destination: UserDetailView(user: user)
+                        destination: UserDetailView(userId: user.id)
                     ){
                         RowView(
-                            name: user.name,
-                            imageName: user.imageName
+                            name: user.login,
+                            imageName: user.avatarUrl
                         )
                     }
                 }
             }
             .navigationTitle("Github Users")
         }
+        .task {
+            await viewModel.getData()
+        }
     }
 }
 
 #Preview {
-    ContentView()
+    ContentView(viewModel: ViewModel())
 }
 

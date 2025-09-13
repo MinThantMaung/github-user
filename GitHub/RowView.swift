@@ -16,9 +16,20 @@ struct RowView: View {
                 
             }) {
                 HStack {
-                    Image(systemName: imageName)
-                        .imageScale(.large)
-                        .foregroundStyle(.tint)
+                    AsyncImage(url: URL(string: imageName)) { image in
+                            image
+                                .resizable()
+                                .scaledToFill()
+                                } placeholder: {
+                                    ProgressView()
+                                }
+                                .frame(
+                                    width: 40,
+                                    height: 40
+                                )
+                                .clipShape(
+                                    Circle()
+                                )
                     Text(name)
                 }
             }

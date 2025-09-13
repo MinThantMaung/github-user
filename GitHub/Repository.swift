@@ -10,6 +10,6 @@ struct Repository: Identifiable {
     var id = UUID()
     var name: String
     var language: String
-    var stars: Double
+    var stars: Int
     var description: String
 }

@@ -10,7 +10,7 @@ import SwiftUI
 struct RepoRowView: View {
     let RepoName: String
     let Language: String
-    let Stars: Double
+    let Stars: Int
     let RepoDesc: String
     var body: some View {
         VStack {
@@ -53,7 +53,7 @@ struct RepoRowView: View {
     RepoRowView(
         RepoName: "GithubUser",
         Language: "Swift",
-        Stars: 4.5,
+        Stars: 4,
         RepoDesc: "this is Desc"
     )
 }

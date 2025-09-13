@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		AAEF76602E71AA6000C40C1B /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = AAEF765F2E71AA6000C40C1B /* Alamofire */; };
+		AAEF76632E71AE4700C40C1B /* netfox in Frameworks */ = {isa = PBXBuildFile; productRef = AAEF76622E71AE4700C40C1B /* netfox */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		AAE9CB072E3DD62E000904E1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -29,9 +34,22 @@
 		AAE9CB102E3DD62E000904E1 /* GitHubUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GitHubUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		AAEF76722E71CC0600C40C1B /* Exceptions for "GitHub" folder in "GitHub" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = AAE9CAF82E3DD62C000904E1 /* GitHub */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		AAE9CAFB2E3DD62C000904E1 /* GitHub */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				AAEF76722E71CC0600C40C1B /* Exceptions for "GitHub" folder in "GitHub" target */,
+			);
 			path = GitHub;
 			sourceTree = "<group>";
 		};
@@ -52,6 +70,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAEF76632E71AE4700C40C1B /* netfox in Frameworks */,
+				AAEF76602E71AA6000C40C1B /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +132,8 @@
 			);
 			name = GitHub;
 			packageProductDependencies = (
+				AAEF765F2E71AA6000C40C1B /* Alamofire */,
+				AAEF76622E71AE4700C40C1B /* netfox */,
 			);
 			productName = GitHub;
 			productReference = AAE9CAF92E3DD62C000904E1 /* GitHub.app */;
@@ -195,6 +217,10 @@
 			);
 			mainGroup = AAE9CAF02E3DD62C000904E1;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				AAEF765E2E71AA6000C40C1B /* XCRemoteSwiftPackageReference "Alamofire" */,
+				AAEF76612E71AE4700C40C1B /* XCRemoteSwiftPackageReference "netfox" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = AAE9CAFA2E3DD62C000904E1 /* Products */;
 			projectDirPath = "";
@@ -271,6 +297,8 @@
 /* Begin XCBuildConfiguration section */
 		AAE9CB182E3DD62E000904E1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = AAE9CAFB2E3DD62C000904E1 /* GitHub */;
+			baseConfigurationReferenceRelativePath = AppEnviroment/Staging.xcconfig;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -307,7 +335,7 @@
 				DEVELOPMENT_TEAM = MSF663W3L5;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -335,6 +363,8 @@
 		};
 		AAE9CB192E3DD62E000904E1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = AAE9CAFB2E3DD62C000904E1 /* GitHub */;
+			baseConfigurationReferenceRelativePath = AppEnviroment/Production.xcconfig;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -371,7 +401,7 @@
 				DEVELOPMENT_TEAM = MSF663W3L5;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -392,7 +422,10 @@
 		};
 		AAE9CB1B2E3DD62E000904E1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = AAE9CAFB2E3DD62C000904E1 /* GitHub */;
+			baseConfigurationReferenceRelativePath = AppEnviroment/Staging.xcconfig;
 			buildSettings = {
+				APP_BUNDLE_DISPLAY_NAME = "${APP_BUNDLE_DISPLAY_NAME}";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -400,6 +433,8 @@
 				DEVELOPMENT_TEAM = MSF663W3L5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GitHub/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Staging;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -410,7 +445,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.kei.GitHub;
+				PRODUCT_BUNDLE_IDENTIFIER = "${APP_BUNDLE_IDENTIFIER}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -420,7 +455,10 @@
 		};
 		AAE9CB1C2E3DD62E000904E1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = AAE9CAFB2E3DD62C000904E1 /* GitHub */;
+			baseConfigurationReferenceRelativePath = AppEnviroment/Production.xcconfig;
 			buildSettings = {
+				APP_BUNDLE_DISPLAY_NAME = "${APP_BUNDLE_DISPLAY_NAME}";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -428,6 +466,8 @@
 				DEVELOPMENT_TEAM = MSF663W3L5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GitHub/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Staging;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -438,7 +478,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.kei.GitHub;
+				PRODUCT_BUNDLE_IDENTIFIER = "${APP_BUNDLE_IDENTIFIER}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -558,6 +598,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		AAEF765E2E71AA6000C40C1B /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.10.2;
+			};
+		};
+		AAEF76612E71AE4700C40C1B /* XCRemoteSwiftPackageReference "netfox" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kasketis/netfox";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.21.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AAEF765F2E71AA6000C40C1B /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AAEF765E2E71AA6000C40C1B /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		AAEF76622E71AE4700C40C1B /* netfox */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AAEF76612E71AE4700C40C1B /* XCRemoteSwiftPackageReference "netfox" */;
+			productName = netfox;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = AAE9CAF12E3DD62C000904E1 /* Project object */;
 }

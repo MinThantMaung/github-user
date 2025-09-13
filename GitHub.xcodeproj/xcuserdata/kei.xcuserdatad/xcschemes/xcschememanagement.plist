@@ -7,7 +7,30 @@
 		<key>GitHub.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>4</integer>
+		</dict>
+		<key>Staging.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>AAE9CAF82E3DD62C000904E1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>AAE9CB052E3DD62E000904E1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>AAE9CB0F2E3DD62E000904E1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>
