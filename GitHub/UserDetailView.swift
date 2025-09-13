@@ -19,27 +19,27 @@ struct UserDetailView: View {
 
                 // Header
                 VStack(alignment: .leading, spacing: 8) {
-                    Text(viewModel.userDetail?.login ?? "")
+                    Text(viewModel.userDetail.login)
                         .font(.title).fontWeight(.bold)
 
-                    AsyncImage(url: URL(string: viewModel.userDetail?.avatarUrl ?? "")) { image in
+                    AsyncImage(url: URL(string: viewModel.userDetail.avatarUrl ?? "https://via.placeholder.com/150")) { image in
                         image.resizable().aspectRatio(contentMode: .fill)
                     } placeholder: { ProgressView() }
                     .frame(width: 100, height: 100)
                     .clipShape(Circle())
 
-                    Text(viewModel.userDetail?.login ?? "")
+                    Text(viewModel.userDetail.login)
                         .font(.headline).fontWeight(.semibold)
 
-                    Text(viewModel.userDetail?.name ?? "")
+                    Text(viewModel.userDetail.name)
                         .font(.subheadline)
                         .foregroundColor(.primary)
 
                     HStack {
-                        Text("Followers: \(viewModel.userDetail?.followers ?? 0)")
+                        Text("Followers: \(viewModel.userDetail.followers)")
                             .foregroundStyle(.gray)
                         Spacer()
-                        Text("Following: \(viewModel.userDetail?.following ?? 0)")
+                        Text("Following: \(viewModel.userDetail.following)")
                             .foregroundStyle(.gray)
                     }
                 }
@@ -63,7 +63,7 @@ struct UserDetailView: View {
         }
         .task {
             await viewModel.getUserDetail(id: userId)
-            await viewModel.getRepositories(url: viewModel.userDetail?.reposUrl ?? "")
+            await viewModel.getRepositories(url: viewModel.userDetail.reposUrl)
         }
     }
 }

@@ -13,7 +13,7 @@ class ViewModel: ObservableObject{
     
     @Published var users = [User]()
     @Published var repositories = [UserRepo]()
-    @Published var userDetail: UserDetailResponse?
+    @Published var userDetail =  UserDetailResponse()
     private let useCase: UserUseCaseDelegate
     init(useCase: UserUseCaseDelegate = UserUseCase()){
         self.useCase = useCase
